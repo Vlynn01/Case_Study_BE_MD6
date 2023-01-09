@@ -18,7 +18,6 @@ public class EnterpriseService implements IEnterpriseService {
 IAppUserRepo iAppUserRepo;
     @Override
     public void save(Enterprise enterprise){
-
         enterpriseRepo.save(enterprise);
     }
 
