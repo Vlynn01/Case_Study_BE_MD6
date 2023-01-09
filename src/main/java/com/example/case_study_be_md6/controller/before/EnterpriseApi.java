@@ -24,6 +24,11 @@ public class EnterpriseApi {
     IEnterpriseService enterpriseService;
 
 
+    @Autowired
+    IUserApplyService userApplyService;
+    @Autowired
+    INotificationEnterpriseService notificationEnterpriseService;
+
 
     @Autowired
     AppUserService appUserService;
@@ -113,6 +118,7 @@ public class EnterpriseApi {
 //    public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
 //        return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
 //    }
+
 ////confim cv của user
 //     @PostMapping("/confirmUserApply/{id}")
 //     public ResponseEntity<NotificationEnterprise> confirmUserApply(@PathVariable int id){
