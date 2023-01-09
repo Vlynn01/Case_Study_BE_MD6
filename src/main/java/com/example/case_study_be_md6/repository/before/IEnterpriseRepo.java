@@ -1,6 +1,5 @@
 package com.example.case_study_be_md6.repository.before;
 
-
 import com.example.case_study_be_md6.model.before.Enterprise;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

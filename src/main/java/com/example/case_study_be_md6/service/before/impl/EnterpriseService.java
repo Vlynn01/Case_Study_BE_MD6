@@ -1,7 +1,8 @@
 package com.example.case_study_be_md6.service.before.impl;
 
 import com.example.case_study_be_md6.model.before.Enterprise;
-//import com.example.case_study_be_md6.repository.before.IAppUserRepo;
+
+import com.example.case_study_be_md6.repository.before.IAppUserRepo;
 import com.example.case_study_be_md6.repository.before.IEnterpriseRepo;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.IEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ public class EnterpriseService implements IEnterpriseService {
     @Autowired
     IEnterpriseRepo enterpriseRepo;
 
-//    @Autowired
-//    IAppUserRepo iAppUserRepo;
+    @Autowired
+    IAppUserRepo iAppUserRepo;
+
     @Override
     public void save(Enterprise enterprise){
 
@@ -23,11 +25,13 @@ public class EnterpriseService implements IEnterpriseService {
     }
 
     @Override
+
     public List<Enterprise> findAll() {
         return (List<Enterprise>) enterpriseRepo.findAll();
     }
 
     @Override
+
     public List<Enterprise> getAllEnterprise() {
        return (List<Enterprise>) enterpriseRepo.findAll();
     }
@@ -66,11 +70,12 @@ public class EnterpriseService implements IEnterpriseService {
     }
 
 
+
 // ĐỔi mật khẩu
-//    @Override
-//    public void changPassword(String email, String password) {
-//        iAppUserRepo.changPassword(email,password);
-//    }
+    @Override
+    public void changPassword(String email, String password) {
+        iAppUserRepo.changPassword(email,password);
+    }
 
 
 //    @Override

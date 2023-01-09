@@ -5,6 +5,7 @@ import com.example.case_study_be_md6.model.before.Notification.NotificationEnter
 import com.example.case_study_be_md6.service.before.InterfaceService.All.*;
 //import com.example.case_study_be_md6.service.before.SendMailService;
 //import com.example.case_study_be_md6.service.before.impl.AppUserService;
+import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +25,9 @@ public class EnterpriseApi {
 
 
 
-//    @Autowired
-//    AppUserService appUserService;
-//
+    @Autowired
+    AppUserService appUserService;
+
 //    @Autowired
 //    INotificationEnterpriseService notificationEnterpriseService;
 //
@@ -59,23 +60,23 @@ public class EnterpriseApi {
     }
 
 
-    @GetMapping("/findEnterpriseId/{id}")
-    public ResponseEntity<Enterprise> getEnterpriseById(@PathVariable int id) {
-        return new ResponseEntity<>(enterpriseService.findEnterpriseById(id), HttpStatus.OK);
-    }
-    @GetMapping("/findEnterprise/{name}")
-    public ResponseEntity<Enterprise> getEnterpriseByName(@PathVariable String name) {
-        return new ResponseEntity<>(enterpriseService.findByGmailEnterprise(name), HttpStatus.OK);
-    }
+//    @GetMapping("/findEnterpriseId/{id}")
+//    public ResponseEntity<Enterprise> getEnterpriseById(@PathVariable int id) {
+//        return new ResponseEntity<>(enterpriseService.findEnterpriseById(id), HttpStatus.OK);
+//    }
+//    @GetMapping("/findEnterprise/{name}")
+//    public ResponseEntity<Enterprise> getEnterpriseByName(@PathVariable String name) {
+//        return new ResponseEntity<>(enterpriseService.findByGmailEnterprise(name), HttpStatus.OK);
+//    }
 
-//    @GetMapping("/findAllFormJob")
-//    public ResponseEntity<List<FormJob>> listFormJob() {
-//        return new ResponseEntity<>(postEnterpriseService.findAllFormJob(), HttpStatus.OK);
-//    }
-//    @GetMapping("/findAllRegime")
-//    public ResponseEntity<List<Regime>> listRegime() {
-//        return new ResponseEntity<>(postEnterpriseService.findAllRegime(), HttpStatus.OK);
-//    }
+    @GetMapping("/findAllFormJob")
+    public ResponseEntity<List<FormJob>> listFormJob() {
+        return new ResponseEntity<>(postEnterpriseService.findAllFormJob(), HttpStatus.OK);
+    }
+    @GetMapping("/findAllRegime")
+    public ResponseEntity<List<Regime>> listRegime() {
+        return new ResponseEntity<>(postEnterpriseService.findAllRegime(), HttpStatus.OK);
+    }
 
     @GetMapping("/listPostVipByEnterprise/{id}")
     public ResponseEntity<List<PostEnterprise>> listPostVipByEnterprise(@PathVariable int id) {

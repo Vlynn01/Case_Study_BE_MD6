@@ -24,8 +24,8 @@ public interface IPostEnterpriseService {
     void delete(int id);
 
     void editPost(PostEnterprise postEnterprise);
-//    List<FormJob> findAllFormJob();
-//    List<Regime> findAllRegime();
+    List<FormJob> findAllFormJob();
+    List<Regime> findAllRegime();
     List<PostEnterprise> findAllByIdEnterprise(int id);
     List<PostEnterprise> listPostByOderPriority(int idUserLogin,Pageable pageable);
     List<PostEnterprise> listPostVipByEnterprise(int id);

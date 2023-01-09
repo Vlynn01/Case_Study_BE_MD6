@@ -20,10 +20,10 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     @Autowired
     IPostEnterpriseRepo postEnterpriseRepo;
 
-//    @Autowired
-//    IFormJobRepo formJobRepo;
-//    @Autowired
-//    IRegimeRepo regimeRepo;
+    @Autowired
+    IFormJobRepo formJobRepo;
+    @Autowired
+    IRegimeRepo regimeRepo;
 //    @Autowired
 //    IUserApplyRepo userApplyRepo;
 
@@ -64,13 +64,13 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 
 // List chế độ bài đăng và hình thức công việc
 
-//    public List<FormJob> findAllFormJob() {
-//        return (List<FormJob>) formJobRepo.findAll();
-//    }
-//
-//    public List<Regime> findAllRegime() {
-//        return (List<Regime>) regimeRepo.findAll();
-//    }
+    public List<FormJob> findAllFormJob() {
+        return (List<FormJob>) formJobRepo.findAll();
+    }
+
+    public List<Regime> findAllRegime() {
+        return (List<Regime>) regimeRepo.findAll();
+    }
 
     @Override
     public List<PostEnterprise> findAllByIdEnterprise(int id) {
