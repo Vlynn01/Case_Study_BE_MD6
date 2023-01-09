@@ -12,7 +12,7 @@ public interface IAppUserRepo extends CrudRepository<AppUser, Long> {
     AppUser findByUsername(String username);
 
 
-    // Đổi mật khẩu
+    // ĐỔi mật khẩu
     @Modifying
     @Transactional
     @Query(nativeQuery = true,value = "update  case_study_be_md6.app_user set password=:password where email=:email")
