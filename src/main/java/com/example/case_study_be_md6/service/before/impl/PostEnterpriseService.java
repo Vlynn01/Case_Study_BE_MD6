@@ -94,21 +94,21 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
 
-    public List<PostEnterprise> findByAddress(String address) {
-        return postEnterpriseRepo.findByAddress(address);
-    }
-
-    public List<PostEnterprise> findByNamePost(String name) {
-        return postEnterpriseRepo.findByNamePost(name);
-    }
-
-    public List<PostEnterprise> findByEnterprise(int id) {
-        return postEnterpriseRepo.findByEnterprise(id);
-    }
-
-    public List<PostEnterprise> findSalary(double salary) {
-        return postEnterpriseRepo.findSalary(salary);
-    }
+//    public List<PostEnterprise> findByAddress(String address) {
+//        return postEnterpriseRepo.findByAddress(address);
+//    }
+//
+//    public List<PostEnterprise> findByNamePost(String name) {
+//        return postEnterpriseRepo.findByNamePost(name);
+//    }
+//
+//    public List<PostEnterprise> findByEnterprise(int id) {
+//        return postEnterpriseRepo.findByEnterprise(id);
+//    }
+//
+//    public List<PostEnterprise> findSalary(double salary) {
+//        return postEnterpriseRepo.findSalary(salary);
+//    }
 
     public void statusPost(int id) {
         postEnterpriseRepo.statusPost(id);
@@ -140,13 +140,13 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
     // Tìm kiếm bài viết theo tên, địa chỉ, lĩnh vực
-    @Override
-    public List<PostEnterprise> findPostUser(String name, String address, int field) {
-        return postEnterpriseRepo.findPostUser(name, address, field);
-    }
-    public List<PostEnterprise> findPostUserField(String name, String address){
-        return postEnterpriseRepo.findPostUserfield(name,address);
-    }
+//    @Override
+//    public List<PostEnterprise> findPostUser(String name, String address, int field) {
+//        return postEnterpriseRepo.findPostUser(name, address, field);
+//    }
+//    public List<PostEnterprise> findPostUserField(String name, String address){
+//        return postEnterpriseRepo.findPostUserfield(name,address);
+//    }
     @Override
     public void deletePostExpired() {
         long millis = System.currentTimeMillis();
@@ -165,7 +165,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.getPostExpired(date);
     }
 
-    public List<PostEnterprise> findPostByUserApply(int id){
-        return postEnterpriseRepo.searchPostApplyByUser(id);
-    }
+
+
+//    public List<PostEnterprise> findPostByUserApply(int id){
+//        return postEnterpriseRepo.searchPostApplyByUser(id);
+//    }
 }
