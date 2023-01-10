@@ -1,13 +1,13 @@
 package com.example.case_study_be_md6.controller.before;
 
 import com.example.case_study_be_md6.model.before.CvUser;
-<<<<<<< HEAD
+
 import com.example.case_study_be_md6.model.before.PostEnterprise;
 import com.example.case_study_be_md6.model.before.UserApply;
-=======
+
 import com.example.case_study_be_md6.model.before.FindPostByUser;
 import com.example.case_study_be_md6.model.before.PostEnterprise;
->>>>>>> 490a3b24aabeac69a55d00d8142dde741d3f2d3e
+
 import com.example.case_study_be_md6.service.before.InterfaceService.All.ICvUserService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.INotificationEnterpriseService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.IUserApplyService;
