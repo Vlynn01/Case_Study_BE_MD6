@@ -94,22 +94,6 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
 
-    public List<PostEnterprise> findByAddress(String address) {
-        return postEnterpriseRepo.findByAddress(address);
-    }
-
-    public List<PostEnterprise> findByNamePost(String name) {
-        return postEnterpriseRepo.findByNamePost(name);
-    }
-
-    public List<PostEnterprise> findByEnterprise(int id) {
-        return postEnterpriseRepo.findByEnterprise(id);
-    }
-
-    public List<PostEnterprise> findSalary(double salary) {
-        return postEnterpriseRepo.findSalary(salary);
-    }
-
     public void statusPost(int id) {
         postEnterpriseRepo.statusPost(id);
     }
@@ -139,10 +123,32 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         postEnterpriseRepo.setPriorityIdPost(number, id);
     }
 
-    // Tìm kiếm bài viết theo tên, địa chỉ, lĩnh vực
-    @Override
-    public List<PostEnterprise> findPostUser(String name, String address, int field) {
-        return postEnterpriseRepo.findPostUser(name, address, field);
+    public List<PostEnterprise> findByAddress(String address) {
+        return postEnterpriseRepo.findByAddress(address);
+    }
+
+    public List<PostEnterprise> findByNamePost(String name) {
+        return postEnterpriseRepo.findByNamePost(name);
+    }
+
+    public List<PostEnterprise> findByEnterprise(String name) {
+        return postEnterpriseRepo.findByEnterprise(name);
+    }
+
+    public List<PostEnterprise> findByFormjob(long id){
+        return postEnterpriseRepo.findByFormJob(id);
+    }
+
+    public List<PostEnterprise> findByCity(String address){
+        return postEnterpriseRepo.findByCity(address);
+    }
+
+//    public List<PostEnterprise> findSalary(double salary) {
+//        return postEnterpriseRepo.findSalary(salary);
+//    }
+
+    public List<PostEnterprise> findByAddressAndField(String address, int field) {
+        return postEnterpriseRepo.findByAddressAndField(address, field);
     }
     public List<PostEnterprise> findPostUserField(String name, String address){
         return postEnterpriseRepo.findPostUserfield(name,address);
