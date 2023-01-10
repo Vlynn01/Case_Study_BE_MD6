@@ -40,8 +40,7 @@ public class EnterpriseApi {
     @Autowired
     AppUserService appUserService;
 
-    @Autowired
-    INotificationEnterpriseService notificationEnterpriseService;
+
 
 //    @Autowired
 //    IUserApplyService userApplyService;
@@ -121,18 +120,17 @@ public class EnterpriseApi {
 //    }
 //    Thông bao đến doanh nghiệp sau khi có user apply
 
-<<<<<<< HEAD
+
     @GetMapping("/listNotiyApply/{idEnterprise}")
     public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
         return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
     }
-=======
+
 //    @GetMapping("/listNotiyApply/{idEnterprise}")
 //    public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
 //        return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
 //    }
 
->>>>>>> 8a762f4534ca028111067599395c55b633755d7f
 ////confim cv của user
 //     @PostMapping("/confirmUserApply/{id}")
 //     public ResponseEntity<NotificationEnterprise> confirmUserApply(@PathVariable int id){

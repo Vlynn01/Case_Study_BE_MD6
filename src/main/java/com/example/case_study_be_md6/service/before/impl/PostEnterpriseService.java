@@ -94,10 +94,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8a762f4534ca028111067599395c55b633755d7f
 //    public List<PostEnterprise> findByAddress(String address) {
 //        return postEnterpriseRepo.findByAddress(address);
 //    }
@@ -152,8 +149,6 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //    public List<PostEnterprise> findPostUserField(String name, String address){
 //        return postEnterpriseRepo.findPostUserfield(name,address);
 //    }
-<<<<<<< HEAD
-=======
 
     public List<PostEnterprise> findByAddress(String address) {
         return postEnterpriseRepo.findByAddress(address);
@@ -186,7 +181,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.findPostUserfield(name,address);
     }
 
->>>>>>> 8a762f4534ca028111067599395c55b633755d7f
+
     @Override
     public void deletePostExpired() {
         long millis = System.currentTimeMillis();
@@ -204,13 +199,13 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.getPostExpired(date);
     }
 
-<<<<<<< HEAD
+
 
 
 //    public List<PostEnterprise> findPostByUserApply(int id){
 //        return postEnterpriseRepo.searchPostApplyByUser(id);
 //    }
-=======
+
 //    @Override
 //    public List<PostEnterprise> findPostUser(String name, String address, int field) {
 //        return null;
@@ -220,5 +215,5 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //        return postEnterpriseRepo.searchPostApplyByUser(id);
 //    }
 //
->>>>>>> 8a762f4534ca028111067599395c55b633755d7f
+
 }
