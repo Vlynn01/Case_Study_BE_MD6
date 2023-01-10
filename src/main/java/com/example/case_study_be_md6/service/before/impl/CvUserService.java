@@ -6,11 +6,19 @@ import com.example.case_study_be_md6.service.before.InterfaceService.All.ICvUser
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CvUserService implements ICvUserService {
 
     @Autowired
     ICvUserRepo cvUserRepo;
+
+    @Override
+    public List<CvUser> finAllCvUser() {
+        return (List<CvUser>) cvUserRepo.findAll();
+    }
+
     @Override
     public void save(CvUser cvUser) {
         cvUserRepo.save(cvUser);

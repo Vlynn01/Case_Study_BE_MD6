@@ -42,22 +42,20 @@ public class EnterpriseApi {
 
 
 
-//    @Autowired
-//    IUserApplyService userApplyService;
-//
+
 //    @Autowired
 //    SendMailService sendMailService;
 //
-//    @Autowired
-//    ICvUserService iCvUserService;
+    @Autowired
+    ICvUserService iCvUserService;
     @GetMapping("/findAll")
     public ResponseEntity<List<PostEnterprise>> findAllPostEnterprise() {
         return new ResponseEntity<>(postEnterpriseService.findAll(), HttpStatus.OK);
     }
-//    @GetMapping("/findAllCvUser")
-//    public ResponseEntity<List<CvUser>> finAllCvUser() {
-//        return new ResponseEntity<>(iCvUserService.finAllCvUser(), HttpStatus.OK);
-//    }
+    @GetMapping("/findAllCvUser")
+    public ResponseEntity<List<CvUser>> finAllCvUser() {
+        return new ResponseEntity<>(iCvUserService.finAllCvUser(), HttpStatus.OK);
+    }
 
     @GetMapping("/findAllByIdEnterprise/{id}")
     public ResponseEntity<List<PostEnterprise>> findAllByIdEnterprise(@PathVariable int id) {
@@ -71,10 +69,10 @@ public class EnterpriseApi {
     }
 
 
-//    @GetMapping("/findEnterpriseId/{id}")
-//    public ResponseEntity<Enterprise> getEnterpriseById(@PathVariable int id) {
-//        return new ResponseEntity<>(enterpriseService.findEnterpriseById(id), HttpStatus.OK);
-//    }
+    @GetMapping("/findEnterpriseId/{id}")
+    public ResponseEntity<Enterprise> getEnterpriseById(@PathVariable int id) {
+        return new ResponseEntity<>(enterpriseService.findEnterpriseById(id), HttpStatus.OK);
+    }
 //    @GetMapping("/findEnterprise/{name}")
 //    public ResponseEntity<Enterprise> getEnterpriseByName(@PathVariable String name) {
 //        return new ResponseEntity<>(enterpriseService.findByGmailEnterprise(name), HttpStatus.OK);
@@ -126,10 +124,6 @@ public class EnterpriseApi {
         return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
     }
 
-//    @GetMapping("/listNotiyApply/{idEnterprise}")
-//    public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
-//        return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
-//    }
 
 ////confim cv của user
 //     @PostMapping("/confirmUserApply/{id}")
