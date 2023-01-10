@@ -82,7 +82,7 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
 
     // Tìm kiếm bài viết
 
-    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% && field_id_field= :field  ")
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% && field_id_field = :field  ")
     List<PostEnterprise> findByAddressAndField(@Param("address") String address, @Param("field") int id);
 
     @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address%  ")
