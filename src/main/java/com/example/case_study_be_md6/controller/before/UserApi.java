@@ -1,8 +1,13 @@
 package com.example.case_study_be_md6.controller.before;
 
 import com.example.case_study_be_md6.model.before.CvUser;
+<<<<<<< HEAD
 import com.example.case_study_be_md6.model.before.PostEnterprise;
 import com.example.case_study_be_md6.model.before.UserApply;
+=======
+import com.example.case_study_be_md6.model.before.FindPostByUser;
+import com.example.case_study_be_md6.model.before.PostEnterprise;
+>>>>>>> 490a3b24aabeac69a55d00d8142dde741d3f2d3e
 import com.example.case_study_be_md6.service.before.InterfaceService.All.ICvUserService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.INotificationEnterpriseService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.IUserApplyService;
@@ -29,6 +34,8 @@ public class UserApi {
 
     @Autowired
     INotificationEnterpriseService notificationEnterpriseService;
+    @Autowired
+    PostEnterpriseService postEnterpriseService1;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<PostEnterprise>> findAll() {
@@ -79,5 +86,35 @@ public class UserApi {
         return new ResponseEntity<>(postEnterpriseService.findSalary(salary), HttpStatus.OK);
     }
 
+
+    @GetMapping("/findbyaddress/{address}")
+    public ResponseEntity<List<PostEnterprise>> findByAddress(@PathVariable String address){
+        return new ResponseEntity<>(postEnterpriseService1.findByAddress(address),HttpStatus.OK);
+    }
+
+    @PostMapping("/findByAddressAndField")
+    public ResponseEntity<List<PostEnterprise>> findByAddressAndField(@RequestBody FindPostByUser findPostByUser) {
+        return new ResponseEntity<>(postEnterpriseService1.findByAddressAndField(findPostByUser.getAddress(), findPostByUser.getIdField()), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByEnterprise/{name}")
+    public ResponseEntity<List<PostEnterprise>> findByEnterprise(@PathVariable String name){
+        return new ResponseEntity<>(postEnterpriseService1.findByEnterprise(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/findByFormjob/{id}")
+    public ResponseEntity<List<PostEnterprise>> findByFormjob(@PathVariable long id){
+        return new ResponseEntity<>(postEnterpriseService1.findByFormjob(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/findByCity/{address}")
+    public ResponseEntity<List<PostEnterprise>> findByCity(@PathVariable String address){
+        return new ResponseEntity<>(postEnterpriseService1.findByCity(address),HttpStatus.OK);
+    }
+
+    @GetMapping("/findByNamepost/{name}")
+    public ResponseEntity<List<PostEnterprise>> findByNamePost(@PathVariable String name){
+        return new ResponseEntity<>(postEnterpriseService1.findByNamePost(name),HttpStatus.OK);
+    }
 
 }
