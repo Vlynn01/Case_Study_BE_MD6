@@ -8,7 +8,11 @@ public interface IEnterpriseService {
 
     void save(Enterprise enterprise);
 
+
     List<Enterprise> findAll();
+
+
+
 
     List<Enterprise> getAllEnterprise();
 
@@ -28,11 +32,7 @@ public interface IEnterpriseService {
 
 //    List<Enterprise> listEnterpriseOderByRates();
 
-//    the
 
-//    tuan
-
-    //    song
     void setStatusEnterpriseTo1(int id);
     void setStatusEnterpriseTo0(int id);
 
@@ -42,8 +42,8 @@ public interface IEnterpriseService {
     void changPassword(String email, String password);
 
 
-//    hai
+//    void changPassword(String email, String password);
 
-//    duc
+
 
 }
