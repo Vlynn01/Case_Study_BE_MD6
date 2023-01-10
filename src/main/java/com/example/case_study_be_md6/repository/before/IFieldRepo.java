@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 public interface IFieldRepo extends CrudRepository<Field,Integer> {
 
 
-
+    //tìm id lĩnh vực
     @Query(nativeQuery = true,value = "select * from Case_Study_MD6.field where id_field=:id")
     Field findById(@Param("id") int id);
 }

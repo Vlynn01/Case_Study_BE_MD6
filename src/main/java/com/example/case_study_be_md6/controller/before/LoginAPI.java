@@ -27,25 +27,29 @@ public class LoginAPI {
 
     @Autowired
     IEnterpriseService enterpriseService;
-    @PostMapping("/login")
-    public ResponseEntity<UserToken> login(@RequestBody AppUser appUser){
 
-            // Tạo ra 1 đối tượng Authentication.
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            String token = jwtService.createToken(authentication);
-            AppUser appUser1 = appUserService.findByUserName(appUser.getUsername());
-            UserToken userToken = new UserToken(appUser1.getId(), appUser1.getUsername(), token, appUser1.getRoles());
-            return new ResponseEntity<>(userToken, HttpStatus.OK);
-        }
-    @GetMapping("/findByName/{name}")
-    public ResponseEntity<AppUser> findByUserName(@PathVariable String name){
-        return new ResponseEntity<>(appUserService.findByUserName(name),HttpStatus.OK);
+    @PostMapping("/login")
+    public ResponseEntity<UserToken> login(@RequestBody AppUser appUser) {
+
+        // Tạo ra 1 đối tượng Authentication.
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtService.createToken(authentication);
+        AppUser appUser1 = appUserService.findByUserName(appUser.getUsername());
+        UserToken userToken = new UserToken(appUser1.getId(), appUser1.getUsername(), token, appUser1.getRoles());
+        return new ResponseEntity<>(userToken, HttpStatus.OK);
     }
+
+    @GetMapping("/findByName/{name}")
+    public ResponseEntity<AppUser> findByUserName(@PathVariable String name) {
+        return new ResponseEntity<>(appUserService.findByUserName(name), HttpStatus.OK);
+    }
+
+    //đổi mật khẩu
     @PostMapping("/changePassword")
-    public ResponseEntity<AppUser> changePassword(@RequestBody ChangePassWord changePassWord ) {
+    public ResponseEntity<AppUser> changePassword(@RequestBody ChangePassWord changePassWord) {
         enterpriseService.changPassword(changePassWord.getGmail(), changePassWord.getPassword());
         return new ResponseEntity<>(HttpStatus.OK);
     }
-  }
+}
