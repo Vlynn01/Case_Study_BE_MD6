@@ -7,7 +7,12 @@ import java.util.List;
 public interface IEnterpriseService {
 
     void save(Enterprise enterprise);
+
+
     List<Enterprise> findAll();
+
+
+
 
     List<Enterprise> getAllEnterprise();
 
@@ -27,16 +32,19 @@ public interface IEnterpriseService {
 
 //    List<Enterprise> listEnterpriseOderByRates();
 
-//    the
 
-//    tuan
 
-    //    song
     void setStatusEnterpriseTo1(int id);
     void setStatusEnterpriseTo0(int id);
 
-//    void changPassword(String email, String password);
+
+
+
+
     void changPassword(String email, String password);
+
+
+
 
 
 }

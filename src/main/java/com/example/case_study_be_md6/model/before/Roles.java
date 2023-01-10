@@ -1,6 +1,8 @@
 package com.example.case_study_be_md6.model.before;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Roles implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,7 +4,6 @@ import com.example.case_study_be_md6.model.before.*;
 import com.example.case_study_be_md6.model.before.Notification.NotificationEnterprise;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.*;
 //import com.example.case_study_be_md6.service.before.SendMailService;
-//import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import com.example.case_study_be_md6.service.before.impl.PostEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +25,23 @@ public class EnterpriseApi {
     @Autowired
     IEnterpriseService enterpriseService;
 
+
+
+    @Autowired
+    IUserApplyService userApplyService;
+    @Autowired
+    INotificationEnterpriseService notificationEnterpriseService;
+
+
     @Autowired
     PostEnterpriseService postEnterpriseService1;
+
 
     @Autowired
     AppUserService appUserService;
 
-//    @Autowired
-//    INotificationEnterpriseService notificationEnterpriseService;
-//
+
+
 //    @Autowired
 //    IUserApplyService userApplyService;
 //
@@ -113,10 +120,17 @@ public class EnterpriseApi {
 //    }
 //    Thông bao đến doanh nghiệp sau khi có user apply
 
+
+    @GetMapping("/listNotiyApply/{idEnterprise}")
+    public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
+        return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
+    }
+
 //    @GetMapping("/listNotiyApply/{idEnterprise}")
 //    public ResponseEntity<List<NotificationEnterprise>> listNotiyApply(@PathVariable int idEnterprise){
 //        return new ResponseEntity<>(notificationEnterpriseService.notificationEnterpriseSByEnterprise(idEnterprise),HttpStatus.OK);
 //    }
+
 ////confim cv của user
 //     @PostMapping("/confirmUserApply/{id}")
 //     public ResponseEntity<NotificationEnterprise> confirmUserApply(@PathVariable int id){

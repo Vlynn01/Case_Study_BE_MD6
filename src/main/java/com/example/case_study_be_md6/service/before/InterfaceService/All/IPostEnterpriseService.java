@@ -47,5 +47,7 @@ public interface IPostEnterpriseService {
     PostEnterprise getPostExpired( String date);
 
 
+// Tìm kiếm bài viết theo tên, địa chỉ và lĩnh vực.
+//    List<PostEnterprise> findPostUser(String name, String address, int field);
 
 }
