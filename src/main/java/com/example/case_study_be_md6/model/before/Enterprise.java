@@ -1,6 +1,8 @@
 package com.example.case_study_be_md6.model.before;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -8,6 +10,8 @@ import java.sql.Time;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Enterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
