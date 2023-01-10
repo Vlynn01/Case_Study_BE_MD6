@@ -9,6 +9,6 @@ public interface IFieldRepo extends CrudRepository<Field,Integer> {
 
 
 
-    @Query(nativeQuery = true,value = "select * from case_study_be_md6.field where id_field=:id")
+    @Query(nativeQuery = true,value = "select * from Case_Study_MD6.field where id_field=:id")
     Field findById(@Param("id") int id);
 }
