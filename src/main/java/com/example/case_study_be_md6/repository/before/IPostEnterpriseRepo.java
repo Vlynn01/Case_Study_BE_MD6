@@ -34,19 +34,6 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
     @Query(nativeQuery = true, value = "select  * from case_study_be_md6.post_enterprise where enterprise_id_enterprise=:id and regime_id_regime=2")
     List<PostEnterprise> listPostThuongByEnterprise(@Param("id") int id);
 
-    // Song Đạt tìm kiếm bài đăng theo địa chỉ và công ty
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where address_main_enterprise LIKE %:address% ")
-//    List<PostEnterprise> findByAddress(@Param("address") String address);
-//
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where enterprise_id_enterprise=:id_enterprise")
-//    List<PostEnterprise> findByEnterprise(@Param("id_enterprise") int id);
-//
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where name_post_enterprise LIKE %:name%")
-//    List<PostEnterprise> findByNamePost(@Param("name") String name);
-//
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where salary_big_post_enterprise between  salary_small_post_enterprise AND  salary_big_post_enterprise ")
-//    List<PostEnterprise> findSalary(double salary);
-
     @Modifying
     @Transactional
     @Query(nativeQuery = true, value = "update post_enterprise set status_post_enterprise = 0 where  id_post_enterprise=:id ")
@@ -92,16 +79,36 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
 //    lấy tất cả bài đăng của ngày hiện tại
     @Query(nativeQuery = true,value = "select * from case_study_be_md6.post_enterprise where expiration_date_post_enterprise=:date limit 1")
     PostEnterprise getPostExpired(@Param("date") String date);
-    // Tìm kiếm bài viết theo lĩnh vực tên công việc, thành phố
 
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address% && field_id_field=:field  ")
-//    List<PostEnterprise> findPostUser(@Param("name") String name, @Param("address") String address, @Param("field") int id);
+    // Tìm kiếm bài viết
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% && field_id_field= :field  ")
+    List<PostEnterprise> findByAddressAndField(@Param("address") String address, @Param("field") int id);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address%  ")
+    List<PostEnterprise> findPostUserfield(@Param("name") String name, @Param("address") String address);
+
+    @Query(nativeQuery = true ,value = "select * from Case_Study_MD6.post_enterprise where id_post_enterprise in\n" +
+            "(select post_enterprise_id_post_enterprise from user_apply\n" +
+            "where app_user_id = :id)")
+     List<PostEnterprise> searchPostApplyByUser(@Param("id") int id);
+
+//     tìm kiếm bài đăng theo địa chỉ và công ty
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% ")
+    List<PostEnterprise> findByAddress(@Param("address") String address);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise join enterprise on post_enterprise.enterprise_id_enterprise = enterprise.id_enterprise where name_enterprise like %:name%")
+    List<PostEnterprise> findByEnterprise(@Param("name") String name);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where form_job_post_enterprise_id_form_job = :id ")
+    List<PostEnterprise> findByFormJob(@Param("id") long id);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise join enterprise on post_enterprise.enterprise_id_enterprise = enterprise.id_enterprise where enterprise.address_main_enterprise like %:address%")
+    List<PostEnterprise> findByCity(@Param("address") String address);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name%")
+    List<PostEnterprise> findByNamePost(@Param("name") String name);
 //
-//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address%  ")
-//    List<PostEnterprise> findPostUserfield(@Param("name") String name, @Param("address") String address);
-//
-//    @Query(nativeQuery = true ,value = "select * from post_enterprise where id_post_enterprise in\n" +
-//            "(select post_enterprise_id_post_enterprise from user_apply\n" +
-//            "where app_user_id = :id)")
-//    public  List<PostEnterprise> searchPostApplyByUser(@Param("id") int id);
+//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where salary_big_post_enterprise between  salary_small_post_enterprise AND  salary_big_post_enterprise ")
+//    List<PostEnterprise> findSalary(double salary);
 }

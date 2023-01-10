@@ -59,7 +59,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 
     @Override
     public void editPost(PostEnterprise postEnterprise) {
-        postEnterpriseRepo.editPost(postEnterprise.getAddressMainEnterprise(),postEnterprise.getDescribePostEnterprise(),postEnterprise.getNamePostEnterprise(),postEnterprise.getSalaryBigPostEnterprise(),postEnterprise.getSalarySmallPostEnterprise(),postEnterprise.getVacanciesPostEnterprise(),postEnterprise.getField().getIdField(),postEnterprise.getFormJobPostEnterprise().getIdFormJob(),postEnterprise.getIdPostEnterprise());
+        postEnterpriseRepo.editPost(postEnterprise.getAddressMainEnterprise(), postEnterprise.getDescribePostEnterprise(), postEnterprise.getNamePostEnterprise(), postEnterprise.getSalaryBigPostEnterprise(), postEnterprise.getSalarySmallPostEnterprise(), postEnterprise.getVacanciesPostEnterprise(), postEnterprise.getField().getIdField(), postEnterprise.getFormJobPostEnterprise().getIdFormJob(), postEnterprise.getIdPostEnterprise());
     }
 
 // List chế độ bài đăng và hình thức công việc
@@ -78,9 +78,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
     @Override
-    public List<PostEnterprise> listPostByOderPriority(int idUserLogin,Pageable pageable) {
+    public List<PostEnterprise> listPostByOderPriority(int idUserLogin, Pageable pageable) {
 
-        return postEnterpriseRepo.listPostByOderPriority(idUserLogin,pageable);
+        return postEnterpriseRepo.listPostByOderPriority(idUserLogin, pageable);
     }
 
     @Override
@@ -89,11 +89,15 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
     @Override
-    public List<PostEnterprise> listPostThuongByEnterprise(int id){
+    public List<PostEnterprise> listPostThuongByEnterprise(int id) {
         return postEnterpriseRepo.listPostThuongByEnterprise(id);
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
 //    public List<PostEnterprise> findByAddress(String address) {
 //        return postEnterpriseRepo.findByAddress(address);
 //    }
@@ -139,6 +143,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         postEnterpriseRepo.setPriorityIdPost(number, id);
     }
 
+
     // Tìm kiếm bài viết theo tên, địa chỉ, lĩnh vực
 //    @Override
 //    public List<PostEnterprise> findPostUser(String name, String address, int field) {
@@ -147,15 +152,49 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //    public List<PostEnterprise> findPostUserField(String name, String address){
 //        return postEnterpriseRepo.findPostUserfield(name,address);
 //    }
+<<<<<<< HEAD
+=======
+
+    public List<PostEnterprise> findByAddress(String address) {
+        return postEnterpriseRepo.findByAddress(address);
+    }
+
+    public List<PostEnterprise> findByNamePost(String name) {
+        return postEnterpriseRepo.findByNamePost(name);
+    }
+
+    public List<PostEnterprise> findByEnterprise(String name) {
+        return postEnterpriseRepo.findByEnterprise(name);
+    }
+
+    public List<PostEnterprise> findByFormjob(long id){
+        return postEnterpriseRepo.findByFormJob(id);
+    }
+
+    public List<PostEnterprise> findByCity(String address){
+        return postEnterpriseRepo.findByCity(address);
+    }
+
+//    public List<PostEnterprise> findSalary(double salary) {
+//        return postEnterpriseRepo.findSalary(salary);
+//    }
+
+    public List<PostEnterprise> findByAddressAndField(String address, int field) {
+        return postEnterpriseRepo.findByAddressAndField(address, field);
+    }
+    public List<PostEnterprise> findPostUserField(String name, String address){
+        return postEnterpriseRepo.findPostUserfield(name,address);
+    }
+
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
     @Override
     public void deletePostExpired() {
         long millis = System.currentTimeMillis();
         java.sql.Date dateNow = new java.sql.Date(millis);
-        String dateNowStr= String.valueOf(dateNow);
-        if(getPostExpired(dateNowStr)!=null){
-               postEnterpriseRepo.deletePostExpired(dateNowStr);
-        }
-        else {
+        String dateNowStr = String.valueOf(dateNow);
+        if (getPostExpired(dateNowStr) != null) {
+            postEnterpriseRepo.deletePostExpired(dateNowStr);
+        } else {
             System.out.println("Không có !");
         }
     }
@@ -165,9 +204,21 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.getPostExpired(date);
     }
 
+<<<<<<< HEAD
 
 
 //    public List<PostEnterprise> findPostByUserApply(int id){
 //        return postEnterpriseRepo.searchPostApplyByUser(id);
 //    }
+=======
+//    @Override
+//    public List<PostEnterprise> findPostUser(String name, String address, int field) {
+//        return null;
+//    }
+//
+//    public List<PostEnterprise> findPostByUserApply(int id){
+//        return postEnterpriseRepo.searchPostApplyByUser(id);
+//    }
+//
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
 }

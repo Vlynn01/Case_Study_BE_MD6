@@ -7,8 +7,18 @@ import java.util.List;
 public interface IEnterpriseService {
 
     void save(Enterprise enterprise);
+<<<<<<< HEAD
     List<Enterprise> findAll();
 
+=======
+
+
+    List<Enterprise> findAll();
+
+
+
+
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
     List<Enterprise> getAllEnterprise();
 
     List<Enterprise> getAllEnterpriseNotConfirmOrderByTime();
@@ -28,12 +38,26 @@ public interface IEnterpriseService {
 //    List<Enterprise> listEnterpriseOderByRates();
 
 
+<<<<<<< HEAD
     //    song
+=======
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
     void setStatusEnterpriseTo1(int id);
     void setStatusEnterpriseTo0(int id);
 
 
+<<<<<<< HEAD
     void changPassword(String email, String password);
 
+=======
+//    void changPassword(String email, String password);
+
+    void changPassword(String email, String password);
+
+
+//    void changPassword(String email, String password);
+
+
+>>>>>>> 8a762f4534ca028111067599395c55b633755d7f
 
 }
