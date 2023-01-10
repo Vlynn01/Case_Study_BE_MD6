@@ -3,7 +3,7 @@ package com.example.case_study_be_md6.controller.before;
 import com.example.case_study_be_md6.model.before.*;
 import com.example.case_study_be_md6.model.before.Notification.NotificationEnterprise;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.*;
-//import com.example.case_study_be_md6.service.before.SendMailService;
+import com.example.case_study_be_md6.service.before.SendMailService;
 import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import com.example.case_study_be_md6.service.before.impl.PostEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +43,9 @@ public class EnterpriseApi {
 
 
 
-//    @Autowired
-//    SendMailService sendMailService;
-//
+    @Autowired
+    SendMailService sendMailService;
+
     @Autowired
     ICvUserService iCvUserService;
     @GetMapping("/findAll")
@@ -73,10 +73,10 @@ public class EnterpriseApi {
     public ResponseEntity<Enterprise> getEnterpriseById(@PathVariable int id) {
         return new ResponseEntity<>(enterpriseService.findEnterpriseById(id), HttpStatus.OK);
     }
-//    @GetMapping("/findEnterprise/{name}")
-//    public ResponseEntity<Enterprise> getEnterpriseByName(@PathVariable String name) {
-//        return new ResponseEntity<>(enterpriseService.findByGmailEnterprise(name), HttpStatus.OK);
-//    }
+    @GetMapping("/findEnterprise/{name}")
+    public ResponseEntity<Enterprise> getEnterpriseByName(@PathVariable String name) {
+        return new ResponseEntity<>(enterpriseService.findByGmailEnterprise(name), HttpStatus.OK);
+    }
 
     @GetMapping("/findAllFormJob")
     public ResponseEntity<List<FormJob>> listFormJob() {
@@ -125,33 +125,33 @@ public class EnterpriseApi {
     }
 
 
-////confim cv của user
-//     @PostMapping("/confirmUserApply/{id}")
-//     public ResponseEntity<NotificationEnterprise> confirmUserApply(@PathVariable int id){
-//          notificationEnterpriseService.updateStatusNotifi(id);
-//          int idUserApply= notificationEnterpriseService.findById(id).getId();
-//          userApplyService.updateStatusConfirmUserApply(idUserApply);
-//          String mailUserApply = userApplyService.findById(idUserApply).getMailCv();
-//          String nameEnterToMail=  notificationEnterpriseService.findById(id).getEnterprise().getNameEnterprise();
-//          String nameJob = userApplyService.findById(id).getPostEnterprise().getNamePostEnterprise();
-//          String vtJob = userApplyService.findById(id).getPostEnterprise().getVacanciesPostEnterprise();
-//          sendMailService.sendMail(mailUserApply,"Công ty "+nameEnterToMail+" thông báo ","\n\t\t Cv ứng tuyển công viêc "+nameJob+" ví trí "+vtJob+" bạn đã được" +
-//                  "công ty chúng tôi xác nhận \n\t\t\t\t -Xin lòng để ý điện thoại khi chúng tôi liên hệ !\n\t Xin cảm ơn ! ");
-//       return  new ResponseEntity<>(HttpStatus.OK);
-//    }
-////    ListAppLy theo bài đăng !
-//    @GetMapping("/allUserApplyByIdPost/{idPost}")
-//    public ResponseEntity<List<UserApply>> allUserApplyByIdPost(@PathVariable int idPost){
-//        for (int i=0;i<userApplyService.listUserApplyByIdPost(idPost).size();i++){
-//            System.out.println(userApplyService.listUserApplyByIdPost(idPost).get(i));
-//        }
-//         return new ResponseEntity<>(userApplyService.listUserApplyByIdPost(idPost),HttpStatus.OK);
-//    }
-////tìm ra dối tượng apply theo id
-//    @GetMapping("/userApplyById/{id}")
-//    public ResponseEntity<UserApply> getUserApplyById(@PathVariable int id){
-//        return new ResponseEntity<>(userApplyService.findById(id),HttpStatus.OK);
-//    }
+//confim cv của user
+     @PostMapping("/confirmUserApply/{id}")
+     public ResponseEntity<NotificationEnterprise> confirmUserApply(@PathVariable int id){
+          notificationEnterpriseService.updateStatusNotifi(id);
+          int idUserApply= notificationEnterpriseService.findById(id).getId();
+          userApplyService.updateStatusConfirmUserApply(idUserApply);
+          String mailUserApply = userApplyService.findById(idUserApply).getMailCv();
+          String nameEnterToMail=  notificationEnterpriseService.findById(id).getEnterprise().getNameEnterprise();
+          String nameJob = userApplyService.findById(id).getPostEnterprise().getNamePostEnterprise();
+          String vtJob = userApplyService.findById(id).getPostEnterprise().getVacanciesPostEnterprise();
+          sendMailService.sendMail(mailUserApply,"Công ty "+nameEnterToMail+" thông báo ","\n\t\t Cv ứng tuyển công viêc "+nameJob+" ví trí "+vtJob+" bạn đã được" +
+                  "công ty chúng tôi xác nhận \n\t\t\t\t -Xin lòng để ý điện thoại khi chúng tôi liên hệ !\n\t Xin cảm ơn ! ");
+       return  new ResponseEntity<>(HttpStatus.OK);
+    }
+//    ListAppLy theo bài đăng !
+    @GetMapping("/allUserApplyByIdPost/{idPost}")
+    public ResponseEntity<List<UserApply>> allUserApplyByIdPost(@PathVariable int idPost){
+        for (int i=0;i<userApplyService.listUserApplyByIdPost(idPost).size();i++){
+            System.out.println(userApplyService.listUserApplyByIdPost(idPost).get(i));
+        }
+         return new ResponseEntity<>(userApplyService.listUserApplyByIdPost(idPost),HttpStatus.OK);
+    }
+//tìm ra dối tượng apply theo id
+    @GetMapping("/userApplyById/{id}")
+    public ResponseEntity<UserApply> getUserApplyById(@PathVariable int id){
+        return new ResponseEntity<>(userApplyService.findById(id),HttpStatus.OK);
+    }
 
 
 //    xóa đi những bài post khi hết hạn !
