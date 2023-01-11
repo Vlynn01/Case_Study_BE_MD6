@@ -37,10 +37,6 @@ public interface IEnterpriseService {
     void setStatusEnterpriseTo1(int id);
     void setStatusEnterpriseTo0(int id);
 
-
-
-
-
     void changPassword(String email, String password);
 
 
