@@ -32,7 +32,8 @@ public class AdminAPI {
 
     @GetMapping("/getAllConfirm")
     public ResponseEntity<List<Enterprise>> getAllEnterpriseConfirm() {
-        return new ResponseEntity<>( HttpStatus.OK);
+
+        return new ResponseEntity<>(enterpriseService.getAllEnterpriseConfirmOrderByTime(), HttpStatus.OK);
     }
 
     @GetMapping("/findEnterprise/{id}")
@@ -84,7 +85,7 @@ public class AdminAPI {
         enterpriseService.setStatusEnterpriseTo1(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/setStatusEnterpriseTo0/{id}")
+    @PostMapping ("/setStatusEnterpriseTo0/{id}")
     public ResponseEntity<Enterprise> setStatusEnterpriseTo0 ( @PathVariable int id){
         enterpriseService.setStatusEnterpriseTo0(id);
             return new ResponseEntity<>(HttpStatus.OK);

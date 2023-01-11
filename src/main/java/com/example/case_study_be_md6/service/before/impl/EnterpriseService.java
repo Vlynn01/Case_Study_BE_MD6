@@ -40,8 +40,10 @@ public class EnterpriseService implements IEnterpriseService {
         return enterpriseRepo.getAllEnterpriseNotConfirmOrderByTime();
     }
 
-
-
+    @Override
+    public List<Enterprise> getAllEnterpriseConfirmOrderByTime() {
+        return enterpriseRepo.getAllEnterpriseConfirmOrderByTime();
+    }
 
 
     @Override

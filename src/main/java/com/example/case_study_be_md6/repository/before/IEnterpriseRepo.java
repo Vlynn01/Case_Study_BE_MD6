@@ -18,6 +18,8 @@ public interface IEnterpriseRepo extends CrudRepository<Enterprise,Integer>{
     void confirmRegisterEnterprise(@Param("password") String password,@Param("status") int status,@Param("id")int id);
     @Query(nativeQuery = true,value = "SELECT * FROM Case_Study_MD6.enterprise where status_confirm=0 ORDER BY time_register_enterprise DESC, date_register_enterprise DESC")
     List<Enterprise> getAllEnterpriseNotConfirmOrderByTime();
+    @Query(nativeQuery = true,value = "SELECT * FROM Case_Study_MD6.enterprise where status_confirm=1 ORDER BY time_register_enterprise DESC, date_register_enterprise DESC")
+    List<Enterprise> getAllEnterpriseConfirmOrderByTime();
 
 
     //tìm theo gmail
@@ -37,7 +39,7 @@ public interface IEnterpriseRepo extends CrudRepository<Enterprise,Integer>{
     //Đặt trạng thái doanh nghiệp là 0
     @Modifying
     @Transactional
-    @Query(nativeQuery = true,value = "update Case_Study_MD6.enterprise set status_enterprise=1 where id_enterprise=:id")
+    @Query(nativeQuery = true,value = "update Case_Study_MD6.enterprise set status_enterprise=0 where id_enterprise=:id")
     void setStatusEnterpriseTo0(@Param("id") int id);
 
 

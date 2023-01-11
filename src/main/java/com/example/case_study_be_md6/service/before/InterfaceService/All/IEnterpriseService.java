@@ -17,6 +17,7 @@ public interface IEnterpriseService {
     List<Enterprise> getAllEnterprise();
 
     List<Enterprise> getAllEnterpriseNotConfirmOrderByTime();
+    List<Enterprise> getAllEnterpriseConfirmOrderByTime();
 
 
     Enterprise findEnterpriseById(int id);
