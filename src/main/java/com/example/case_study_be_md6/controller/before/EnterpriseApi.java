@@ -194,8 +194,4 @@ public class EnterpriseApi {
         return new ResponseEntity<>(postEnterpriseService1.findByNamePost(name),HttpStatus.OK);
     }
 
-
-
-
-
 }

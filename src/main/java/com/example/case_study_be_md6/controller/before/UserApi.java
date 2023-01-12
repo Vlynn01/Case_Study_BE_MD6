@@ -1,14 +1,13 @@
 package com.example.case_study_be_md6.controller.before;
 
-import com.example.case_study_be_md6.model.before.CvUser;
-import com.example.case_study_be_md6.model.before.PostEnterprise;
-import com.example.case_study_be_md6.model.before.UserApply;
-import com.example.case_study_be_md6.model.before.FindPostByUser;
+import com.example.case_study_be_md6.model.before.*;
 import com.example.case_study_be_md6.model.before.PostEnterprise;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.ICvUserService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.INotificationEnterpriseService;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.IUserApplyService;
+import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import com.example.case_study_be_md6.service.before.impl.PostEnterpriseService;
+//import com.sun.tools.javac.main.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -33,6 +32,9 @@ public class UserApi {
     INotificationEnterpriseService notificationEnterpriseService;
     @Autowired
     PostEnterpriseService postEnterpriseService1;
+
+    @Autowired
+    AppUserService appUserService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<PostEnterprise>> findAll() {
@@ -78,10 +80,10 @@ public class UserApi {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-    @GetMapping("/findSalary/{salary}")
-    public ResponseEntity<List<PostEnterprise>> findBySalary(@PathVariable double salary) {
-        return new ResponseEntity<>(postEnterpriseService.findSalary(salary), HttpStatus.OK);
-    }
+//    @GetMapping("/findSalary/{salary}")
+//    public ResponseEntity<List<PostEnterprise>> findBySalary(@PathVariable double salary) {
+//        return new ResponseEntity<>(postEnterpriseService.findSalary(salary), HttpStatus.OK);
+//    }
 
 
     @GetMapping("/findbyaddress/{address}")
@@ -92,6 +94,11 @@ public class UserApi {
     @PostMapping("/findByAddressAndField")
     public ResponseEntity<List<PostEnterprise>> findByAddressAndField(@RequestBody FindPostByUser findPostByUser) {
         return new ResponseEntity<>(postEnterpriseService1.findByAddressAndField(findPostByUser.getAddress(), findPostByUser.getIdField()), HttpStatus.OK);
+    }
+
+    @PostMapping("/findByAddressAndFormJob")
+    public ResponseEntity<List<PostEnterprise>> findByAddressAndFormJob(@RequestBody FindPostByUser findPostByUser) {
+        return new ResponseEntity<>(postEnterpriseService1.findByAddressAndField(findPostByUser.getAddress(), findPostByUser.getIdFormJob()), HttpStatus.OK);
     }
 
     @GetMapping("/findByEnterprise/{name}")
@@ -112,6 +119,26 @@ public class UserApi {
     @GetMapping("/findByNamepost/{name}")
     public ResponseEntity<List<PostEnterprise>> findByNamePost(@PathVariable String name){
         return new ResponseEntity<>(postEnterpriseService1.findByNamePost(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/finduser/{name}")
+    public ResponseEntity<AppUser> findByUserName(@PathVariable String name){
+        return new ResponseEntity<>(appUserService.findByUserName1(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllFormJob")
+    public ResponseEntity<List<FormJob>> findAllFormJob(){
+        return new ResponseEntity<>(postEnterpriseService1.findAllFormJob(),HttpStatus.OK);
+    }
+
+    @PostMapping("/findByFieldAndFormJob")
+    public ResponseEntity<List<PostEnterprise>> findByFieldAndFormJob(FindPostByUser findPostByUser){
+        return new ResponseEntity<>(postEnterpriseService1.findByFieldAndFormJob(findPostByUser.getIdField(), findPostByUser.getIdFormJob()),HttpStatus.OK);
+    }
+
+    @GetMapping("/find-everything")
+    public ResponseEntity<List<PostEnterprise>> findEverything(@RequestParam(required = false, defaultValue = "", value = "address") String address, @RequestParam(required = false, defaultValue = "-1", value = "id-form-job") Long idFormJob, @RequestParam(required = false, defaultValue = "-1", value = "id-field") Long idField, @RequestParam(required = false, defaultValue = "1") int page ){
+        return new ResponseEntity<>(postEnterpriseService1.findErverything(address, idFormJob, idField, page),HttpStatus.OK);
     }
 
 }

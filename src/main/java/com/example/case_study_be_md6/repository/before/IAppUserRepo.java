@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface IAppUserRepo extends CrudRepository<AppUser, Long> {
     AppUser findByUsername(String username);
@@ -18,6 +19,7 @@ public interface IAppUserRepo extends CrudRepository<AppUser, Long> {
     @Query(nativeQuery = true,value = "update  Case_Study_MD6.app_user set password=:password where email=:email")
     void changPassword(@Param("email") String gmail,@Param("password") String password);
 
-
+    @Query(nativeQuery = true, value = "select * from AppUser where username = :username")
+    AppUser findByUserName1(@Param("username")String username);
 
 }

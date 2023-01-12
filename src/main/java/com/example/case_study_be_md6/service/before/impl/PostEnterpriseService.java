@@ -9,6 +9,7 @@ import com.example.case_study_be_md6.repository.before.IRegimeRepo;
 //import com.example.case_study_be_md6.repository.before.IUserApplyRepo;
 import com.example.case_study_be_md6.service.before.InterfaceService.All.IPostEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -107,9 +108,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //        return postEnterpriseRepo.findByEnterprise(id);
 //    }
 //
-    public List<PostEnterprise> findSalary(double salary) {
-        return postEnterpriseRepo.findSalary(salary);
-    }
+//    public List<PostEnterprise> findSalary(double salary) {
+//        return postEnterpriseRepo.findSalary(salary);
+//    }
 
     public void statusPost(int id) {
         postEnterpriseRepo.statusPost(id);
@@ -174,11 +175,24 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //        return postEnterpriseRepo.findSalary(salary);
 //    }
 
-    public List<PostEnterprise> findByAddressAndField(String address, int field) {
+    public List<PostEnterprise> findByAddressAndField(String address, Long field) {
         return postEnterpriseRepo.findByAddressAndField(address, field);
+    }
+
+    public List<PostEnterprise> findByFieldAndFormJob(long idfield, long idformjob){
+        return postEnterpriseRepo.findByFieldAndFormJob(idfield, idformjob);
+    }
+
+    public List<PostEnterprise> findByAddressAndFormJob(String address, int formjob) {
+        return postEnterpriseRepo.findByAddressAndFormJob(address, formjob);
     }
     public List<PostEnterprise> findPostUserField(String name, String address){
         return postEnterpriseRepo.findPostUserfield(name,address);
+    }
+
+    public List<PostEnterprise> findErverything(String address, Long idformjob, Long idfield, int page){
+        Pageable pageable = PageRequest.of(page-1, 3);
+        return postEnterpriseRepo.findEverything(address, idformjob, idfield, pageable).getContent();
     }
 
 

@@ -2,6 +2,7 @@ package com.example.case_study_be_md6.repository.before;
 
 import com.example.case_study_be_md6.model.before.PostEnterprise;
 import com.example.case_study_be_md6.model.before.PostEnterprise;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -83,7 +84,10 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
     // Tìm kiếm bài viết
 
     @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% && field_id_field = :field  ")
-    List<PostEnterprise> findByAddressAndField(@Param("address") String address, @Param("field") int id);
+    List<PostEnterprise> findByAddressAndField(@Param("address") String address, @Param("field") Long id);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where address_main_enterprise LIKE %:address% && form_job_post_enterprise_id_form_job = :formjob  ")
+    List<PostEnterprise> findByAddressAndFormJob(@Param("address") String address, @Param("formjob") int id);
 
     @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address%  ")
     List<PostEnterprise> findPostUserfield(@Param("name") String name, @Param("address") String address);
@@ -109,6 +113,29 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
     @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name%")
     List<PostEnterprise> findByNamePost(@Param("name") String name);
 
-    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where salary_big_post_enterprise between  salary_small_post_enterprise AND  salary_big_post_enterprise ")
-    List<PostEnterprise> findSalary(double salary);
+//    @Query(nativeQuery = true, value = "select * from case_module_6.post_enterprise where salary_big_post_enterprise between  salary_small_post_enterprise AND  salary_big_post_enterprise ")
+//    List<PostEnterprise> findSalary(double salary);
+
+    @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where field_id_field = :idField && form_job_post_enterprise_id_form_job = :idFormJob")
+    List<PostEnterprise> findByFieldAndFormJob(@Param("idField") long idfield, @Param("idFormJob") long idformjob);
+
+//    @Query(nativeQuery = true, value = """
+//                SELECT * FROM case_study_md6.post_enterprise
+//                            WHERE (address_main_enterprise like %:address% OR address_main_enterprise like '') AND
+//                            (form_job_post_enterprise_id_form_job = :idFormJob) and
+//                            (field_id_field = :idField)
+//            """)
+
+
+//            "SELECT * FROM case_study_md6.post_enterprise" +
+//            "WHERE (address_main_enterprise like %address% OR address_main_enterprise like '') AND " +
+//            "(form_job_post_enterprise_id_form_job is not null) and (field_id_field is not null)")
+//    List<PostEnterprise> findEverything(@Param("address") String address, @Param("idFormJob") long idformjob, @Param("idField") long idfield);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM case_study_md6.post_enterprise\n" +
+            "WHERE (:address = '' OR address_main_enterprise like %:address%) AND" +
+            "(:idFormJob = -1 OR form_job_post_enterprise_id_form_job = :idFormJob) and" +
+            "      (:idField = -1 OR field_id_field = :idField)")
+    Page<PostEnterprise> findEverything(@Param("address") String address, @Param("idFormJob") Long idformjob, @Param("idField") Long idfield, Pageable pageable);
+
 }
