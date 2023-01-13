@@ -168,32 +168,26 @@ public class EnterpriseApi {
     public ResponseEntity<List<PostEnterprise>> findByAddress(@PathVariable String address){
         return new ResponseEntity<>(postEnterpriseService1.findByAddress(address),HttpStatus.OK);
     }
-
     @PostMapping("/findByAddressAndField")
     public ResponseEntity<List<PostEnterprise>> findByAddressAndField(@RequestBody FindPostByUser findPostByUser) {
         return new ResponseEntity<>(postEnterpriseService1.findByAddressAndField(findPostByUser.getAddress(), findPostByUser.getIdField()), HttpStatus.OK);
     }
-
     @GetMapping("/findByEnterprise/{name}")
     public ResponseEntity<List<PostEnterprise>> findByEnterprise(@PathVariable String name){
         return new ResponseEntity<>(postEnterpriseService1.findByEnterprise(name),HttpStatus.OK);
     }
-
     @GetMapping("/findByFormjob/{id}")
     public ResponseEntity<List<PostEnterprise>> findByFormjob(@PathVariable long id){
         return new ResponseEntity<>(postEnterpriseService1.findByFormjob(id),HttpStatus.OK);
     }
-
     @GetMapping("/findByCity/{address}")
     public ResponseEntity<List<PostEnterprise>> findByCity(@PathVariable String address){
         return new ResponseEntity<>(postEnterpriseService1.findByCity(address),HttpStatus.OK);
     }
-
     @GetMapping("/findByNamepost/{name}")
     public ResponseEntity<List<PostEnterprise>> findByNamePost(@PathVariable String name){
         return new ResponseEntity<>(postEnterpriseService1.findByNamePost(name),HttpStatus.OK);
     }
-
     @PostMapping("/editProfile")
     public ResponseEntity<Enterprise> editEnterprise(@RequestBody Enterprise enterprise) {
        enterpriseService.editProfile(enterprise);
