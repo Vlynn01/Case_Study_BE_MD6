@@ -47,9 +47,8 @@ public interface IEnterpriseRepo extends CrudRepository<Enterprise,Integer>{
     void setStatusEnterpriseTo0(@Param("id") int id);
 
 
-
-//    @Query(nativeQuery = true,value = "SELECT * FROM case_module_6.enterprise where status_confirm=1 order by rates_enterprise desc")
-//    List<Enterprise> listEnterpriseOderByRates();
+    @Query(nativeQuery = true, value = "select * from enterprise where name_enterprise is not null ")
+    List<Enterprise> findAllEnterprise();
 
 
 

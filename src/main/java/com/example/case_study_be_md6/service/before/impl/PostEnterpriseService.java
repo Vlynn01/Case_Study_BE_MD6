@@ -190,9 +190,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.findPostUserfield(name,address);
     }
 
-    public List<PostEnterprise> findErverything(String address, Long idformjob, Long idfield, int page){
+    public List<PostEnterprise> findErverything(String name, String address, Long idformjob, Long idfield, int page){
         Pageable pageable = PageRequest.of(page-1, 3);
-        return postEnterpriseRepo.findEverything(address, idformjob, idfield, pageable).getContent();
+        return postEnterpriseRepo.findEverything(name, address, idformjob, idfield, pageable).getContent();
     }
 
 
@@ -213,7 +213,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.getPostExpired(date);
     }
 
-
+    public List<PostEnterprise> findAllAddress(){
+        return postEnterpriseRepo.findAllAddress();
+    }
 
 
 //    public List<PostEnterprise> findPostByUserApply(int id){

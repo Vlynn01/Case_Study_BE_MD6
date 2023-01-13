@@ -94,5 +94,8 @@ public class EnterpriseService implements IEnterpriseService {
         return enterpriseRepo.findByGmailEnterprise(name);
     }
 
+    public List<Enterprise> findAllEnterprise(){
+        return enterpriseRepo.findAllEnterprise();
+    }
 
 }

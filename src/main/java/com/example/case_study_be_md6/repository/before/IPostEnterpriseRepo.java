@@ -132,10 +132,14 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
 //            "(form_job_post_enterprise_id_form_job is not null) and (field_id_field is not null)")
 //    List<PostEnterprise> findEverything(@Param("address") String address, @Param("idFormJob") long idformjob, @Param("idField") long idfield);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM case_study_md6.post_enterprise\n" +
-            "WHERE (:address = '' OR address_main_enterprise like %:address%) AND" +
+    @Query(nativeQuery = true, value = "SELECT post_enterprise.* FROM case_study_md6.post_enterprise join enterprise on post_enterprise.enterprise_id_enterprise = enterprise.id_enterprise\n" +
+            "WHERE (:name = '' or enterprise.name_enterprise like %:name%) AND (:address = '' OR post_enterprise.address_main_enterprise like %:address%) AND" +
             "(:idFormJob = -1 OR form_job_post_enterprise_id_form_job = :idFormJob) and" +
             "      (:idField = -1 OR field_id_field = :idField)")
-    Page<PostEnterprise> findEverything(@Param("address") String address, @Param("idFormJob") Long idformjob, @Param("idField") Long idfield, Pageable pageable);
+    Page<PostEnterprise> findEverything(@Param("name") String name, @Param("address") String address, @Param("idFormJob") Long idformjob, @Param("idField") Long idfield, Pageable pageable);
+
+    @Query(nativeQuery = true, value = "select * from case_study_md6.post_enterprise where address_main_enterprise is not null")
+    List<PostEnterprise> findAllAddress();
+
 
 }
