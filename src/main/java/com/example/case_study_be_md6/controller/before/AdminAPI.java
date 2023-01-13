@@ -1,7 +1,10 @@
 package com.example.case_study_be_md6.controller.before;
 
-import com.example.case_study_be_md6.model.before.*;
-import com.example.case_study_be_md6.service.before.InterfaceService.All.*;
+
+import com.example.case_study_be_md6.model.before.AppUser;
+import com.example.case_study_be_md6.model.before.Enterprise;
+import com.example.case_study_be_md6.model.before.Roles;
+import com.example.case_study_be_md6.service.before.InterfaceService.All.IEnterpriseService;
 import com.example.case_study_be_md6.service.before.SendMailService;
 import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,8 @@ public class AdminAPI {
 
     @GetMapping("/getAllConfirm")
     public ResponseEntity<List<Enterprise>> getAllEnterpriseConfirm() {
-        return new ResponseEntity<>( HttpStatus.OK);
+
+        return new ResponseEntity<>(enterpriseService.getAllEnterpriseConfirmOrderByTime(), HttpStatus.OK);
     }
 
     @GetMapping("/findEnterprise/{id}")
@@ -84,7 +88,7 @@ public class AdminAPI {
         enterpriseService.setStatusEnterpriseTo1(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/setStatusEnterpriseTo0/{id}")
+    @PostMapping ("/setStatusEnterpriseTo0/{id}")
     public ResponseEntity<Enterprise> setStatusEnterpriseTo0 ( @PathVariable int id){
         enterpriseService.setStatusEnterpriseTo0(id);
             return new ResponseEntity<>(HttpStatus.OK);

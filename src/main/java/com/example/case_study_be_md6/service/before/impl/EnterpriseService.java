@@ -30,6 +30,11 @@ public class EnterpriseService implements IEnterpriseService {
     }
 
     @Override
+    public void editProfile(Enterprise enterprise) {
+        enterpriseRepo.editProfile(enterprise.getNameEnterprise(),enterprise.getAddressMainEnterprise(),enterprise.getDescribeEnterprise(),enterprise.getIdEnterprise());
+    }
+
+    @Override
 
     public List<Enterprise> getAllEnterprise() {
        return (List<Enterprise>) enterpriseRepo.findAll();
@@ -40,8 +45,10 @@ public class EnterpriseService implements IEnterpriseService {
         return enterpriseRepo.getAllEnterpriseNotConfirmOrderByTime();
     }
 
-
-
+    @Override
+    public List<Enterprise> getAllEnterpriseConfirmOrderByTime() {
+        return enterpriseRepo.getAllEnterpriseConfirmOrderByTime();
+    }
 
 
     @Override
