@@ -1,11 +1,12 @@
 package com.example.case_study_be_md6.controller.before;
 
-import com.example.case_study_be_md6.model.AppUser;
-import com.example.case_study_be_md6.model.Enterprise;
-import com.example.case_study_be_md6.model.Roles;
-import com.example.case_study_be_md6.service.InterfaceService.All.*;
-import com.example.case_study_be_md6.service.SendMailService;
-import com.example.case_study_be_md6.service.impl.AppUserService;
+
+import com.example.case_study_be_md6.model.before.AppUser;
+import com.example.case_study_be_md6.model.before.Enterprise;
+import com.example.case_study_be_md6.model.before.Roles;
+import com.example.case_study_be_md6.service.before.InterfaceService.All.IEnterpriseService;
+import com.example.case_study_be_md6.service.before.SendMailService;
+import com.example.case_study_be_md6.service.before.impl.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
