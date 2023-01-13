@@ -16,7 +16,7 @@ public interface IAppUserRepo extends CrudRepository<AppUser, Long> {
     // Đổi mật khẩu
     @Modifying
     @Transactional
-    @Query(nativeQuery = true, value = "update  Case_Study_MD6.app_user set password=:password where email=:email")
+    @Query(nativeQuery = true, value = "update Case_Study_MD6.app_user set password=:password where email=:email")
     void changPassword(@Param("email") String gmail, @Param("password") String password);
 
 }

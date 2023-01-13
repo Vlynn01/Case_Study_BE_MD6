@@ -44,6 +44,10 @@ public interface IEnterpriseRepo extends CrudRepository<Enterprise, Integer> {
     @Query(nativeQuery = true, value = "update Case_Study_MD6.enterprise set status_enterprise=0 where id_enterprise=:id")
     void setStatusEnterpriseTo0(@Param("id") int id);
 
+    @Query(nativeQuery = true,value = "update enterprise set password_enterprise=:password where id_enterprise=:id")
+    void changePasswordEnterprise(@Param("password") String password);
+
+
 
 //    @Query(nativeQuery = true,value = "SELECT * FROM case_module_6.enterprise where status_confirm=1 order by rates_enterprise desc")
 //    List<Enterprise> listEnterpriseOderByRates();
