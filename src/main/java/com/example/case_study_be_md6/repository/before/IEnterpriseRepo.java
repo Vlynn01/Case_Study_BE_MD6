@@ -25,6 +25,10 @@ public interface IEnterpriseRepo extends CrudRepository<Enterprise,Integer>{
     @Query(nativeQuery = true,value = "SELECT * FROM Case_Study_MD6.enterprise where gmail_enterprise=:gmail")
     Enterprise findByGmailEnterprise(@Param("gmail") String name);
 
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value = "UPDATE enterprise SET name_enterprise =:nameEnterprise, address_main_enterprise =:addressMainEnterprise, describe_enterprise =:describeEnterprise WHERE id_enterprise =:idEnterprise ")
+    void editProfile( @Param("nameEnterprise") String name_enterprise,@Param("addressMainEnterprise") String address_main_enterprise,@Param("describeEnterprise") String describe_enterprise,@Param("idEnterprise") int id_enterprise);
 
 
 

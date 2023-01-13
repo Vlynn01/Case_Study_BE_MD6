@@ -193,7 +193,11 @@ public class EnterpriseApi {
     public ResponseEntity<List<PostEnterprise>> findByNamePost(@PathVariable String name){
         return new ResponseEntity<>(postEnterpriseService1.findByNamePost(name),HttpStatus.OK);
     }
-
+    @PostMapping("/editProfile")
+    public ResponseEntity<Enterprise> editEnterprise(@RequestBody Enterprise enterprise) {
+       enterpriseService.editProfile(enterprise);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 

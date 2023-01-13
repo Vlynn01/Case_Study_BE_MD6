@@ -11,7 +11,7 @@ public interface IEnterpriseService {
 
     List<Enterprise> findAll();
 
-
+   void editProfile (Enterprise enterprise);
 
 
     List<Enterprise> getAllEnterprise();
