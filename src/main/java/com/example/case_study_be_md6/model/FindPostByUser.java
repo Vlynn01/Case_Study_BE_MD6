@@ -4,8 +4,11 @@ import lombok.Data;
 
 @Data
 public class FindPostByUser {
+
     private String nameEnterprise;
+
     private String city;
+
     private Long idField;
 
     private String address;
