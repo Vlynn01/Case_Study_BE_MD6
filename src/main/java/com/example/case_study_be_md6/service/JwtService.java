@@ -1,5 +1,5 @@
 package com.example.case_study_be_md6.service;
-import com.example.case_study_be_md6.service.before.impl.AppUserService;
+import com.example.case_study_be_md6.service.impl.AppUserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
