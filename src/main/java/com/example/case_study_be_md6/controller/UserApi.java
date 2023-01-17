@@ -146,8 +146,8 @@ public class UserApi {
     }
 
     @GetMapping("/find-everything")
-    public ResponseEntity<List<PostEnterprise>> findEverything(@RequestParam(required = false, defaultValue = "", value = "name-enterprise") String name, @RequestParam(required = false, defaultValue = "", value = "address") String address, @RequestParam(required = false, defaultValue = "-1", value = "id-form-job") Long idFormJob, @RequestParam(required = false, defaultValue = "-1", value = "id-field") Long idField, @RequestParam(required = false, defaultValue = "1") int page) {
-        return new ResponseEntity<>(postEnterpriseService1.findErverything(name, address, idFormJob, idField), HttpStatus.OK);
+    public ResponseEntity<List<PostEnterprise>> findPostEnterpriseByCondition(@RequestParam(value = "user_id") Long userId, @RequestParam(required = false, defaultValue = "", value = "name-enterprise") String name, @RequestParam(required = false, defaultValue = "", value = "address") String address, @RequestParam(required = false, defaultValue = "-1", value = "id-form-job") Long idFormJob, @RequestParam(required = false, defaultValue = "-1", value = "id-field") Long idField, @RequestParam(required = false, defaultValue = "1") Integer page) {
+        return new ResponseEntity<>(postEnterpriseService1.findPostEnterpriseByCondition(userId, name, address, idFormJob, idField, page), HttpStatus.OK);
     }
 
     @GetMapping("/find-all-address")

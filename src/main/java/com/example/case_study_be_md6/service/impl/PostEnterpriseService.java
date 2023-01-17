@@ -1,6 +1,5 @@
 package com.example.case_study_be_md6.service.impl;
 
-import com.example.case_study_be_md6.dto.IPostEnterpriseStatisticDTO;
 import com.example.case_study_be_md6.model.FormJob;
 import com.example.case_study_be_md6.model.PostEnterprise;
 import com.example.case_study_be_md6.model.Regime;
@@ -190,9 +189,9 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.findPostUserfield(name, address);
     }
 
-    public List<PostEnterprise> findErverything(String name, String address, Long idformjob, Long idfield) {
-//        Pageable pageable = PageRequest.of(page - 1, 3);
-        return postEnterpriseRepo.findEverything(name, address, idformjob, idfield);
+    public List<PostEnterprise> findPostEnterpriseByCondition(Long userId, String name, String address, Long idformjob, Long idfield, Integer page) {
+        Pageable pageable = PageRequest.of(page - 1, 3);
+        return postEnterpriseRepo.findPostEnterpriseByCondition(userId, name, address, idformjob, idfield, pageable).getContent();
     }
 
 
@@ -232,7 +231,4 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //    }
 //
 
-    public List<IPostEnterpriseStatisticDTO> getNumberUserApplyForEachPost() {
-        return postEnterpriseRepo.getNumberUserApplyForEachPost();
-    }
 }

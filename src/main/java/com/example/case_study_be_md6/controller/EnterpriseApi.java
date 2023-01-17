@@ -206,8 +206,5 @@ public class EnterpriseApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("test")
-    private ResponseEntity<?> test() {
-        return new ResponseEntity<>(postEnterpriseService.getNumberUserApplyForEachPost(), HttpStatus.OK);
-    }
+
 }

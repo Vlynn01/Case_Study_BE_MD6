@@ -12,6 +12,8 @@ public class FindPostByUser {
 
     private Long idFormJob;
 
+    private Long userId;
+
     public FindPostByUser() {
     }
 
