@@ -40,6 +40,7 @@ public class PostEnterprise {
 // độ ưu tiên bài đăng
     private int priorityPostEnterprise=0;
 
+    @Column(name = "describe_post_enterprise", columnDefinition = "longtext")
     private String describePostEnterprise;
 
     private int quantityApplyPost=0;

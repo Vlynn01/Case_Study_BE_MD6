@@ -2,7 +2,7 @@ package com.example.case_study_be_md6.controller;
 
 import com.example.case_study_be_md6.model.AppUser;
 import com.example.case_study_be_md6.model.ChangePassWord;
-import com.example.case_study_be_md6.model.ot.UserToken;
+import com.example.case_study_be_md6.dto.UserToken;
 import com.example.case_study_be_md6.service.JwtService;
 import com.example.case_study_be_md6.service.InterfaceService.IEnterpriseService;
 import com.example.case_study_be_md6.service.impl.AppUserService;

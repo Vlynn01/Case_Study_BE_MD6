@@ -1,12 +1,12 @@
 package com.example.case_study_be_md6.service.impl;
 
+import com.example.case_study_be_md6.dto.IPostEnterpriseStatisticDTO;
 import com.example.case_study_be_md6.model.FormJob;
 import com.example.case_study_be_md6.model.PostEnterprise;
 import com.example.case_study_be_md6.model.Regime;
 import com.example.case_study_be_md6.repository.IFormJobRepo;
 import com.example.case_study_be_md6.repository.IPostEnterpriseRepo;
 import com.example.case_study_be_md6.repository.IRegimeRepo;
-//import com.example.case_study_be_md6.repository.IUserApplyRepo;
 import com.example.case_study_be_md6.service.InterfaceService.IPostEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -95,7 +95,6 @@ public class PostEnterpriseService implements IPostEnterpriseService {
     }
 
 
-
 //    public List<PostEnterprise> findByAddress(String address) {
 //        return postEnterpriseRepo.findByAddress(address);
 //    }
@@ -163,11 +162,11 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.findByEnterprise(name);
     }
 
-    public List<PostEnterprise> findByFormjob(long id){
+    public List<PostEnterprise> findByFormjob(long id) {
         return postEnterpriseRepo.findByFormJob(id);
     }
 
-    public List<PostEnterprise> findByCity(String address){
+    public List<PostEnterprise> findByCity(String address) {
         return postEnterpriseRepo.findByCity(address);
     }
 
@@ -179,20 +178,21 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.findByAddressAndField(address, field);
     }
 
-    public List<PostEnterprise> findByFieldAndFormJob(long idfield, long idformjob){
+    public List<PostEnterprise> findByFieldAndFormJob(long idfield, long idformjob) {
         return postEnterpriseRepo.findByFieldAndFormJob(idfield, idformjob);
     }
 
     public List<PostEnterprise> findByAddressAndFormJob(String address, int formjob) {
         return postEnterpriseRepo.findByAddressAndFormJob(address, formjob);
     }
-    public List<PostEnterprise> findPostUserField(String name, String address){
-        return postEnterpriseRepo.findPostUserfield(name,address);
+
+    public List<PostEnterprise> findPostUserField(String name, String address) {
+        return postEnterpriseRepo.findPostUserfield(name, address);
     }
 
-    public List<PostEnterprise> findErverything(String name, String address, Long idformjob, Long idfield, int page){
-        Pageable pageable = PageRequest.of(page-1, 3);
-        return postEnterpriseRepo.findEverything(name, address, idformjob, idfield, pageable).getContent();
+    public List<PostEnterprise> findErverything(String name, String address, Long idformjob, Long idfield) {
+//        Pageable pageable = PageRequest.of(page - 1, 3);
+        return postEnterpriseRepo.findEverything(name, address, idformjob, idfield);
     }
 
 
@@ -213,7 +213,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
         return postEnterpriseRepo.getPostExpired(date);
     }
 
-    public List<PostEnterprise> findAllAddress(){
+    public List<PostEnterprise> findAllAddress() {
         return postEnterpriseRepo.findAllAddress();
     }
 
@@ -232,4 +232,7 @@ public class PostEnterpriseService implements IPostEnterpriseService {
 //    }
 //
 
+    public List<IPostEnterpriseStatisticDTO> getNumberUserApplyForEachPost() {
+        return postEnterpriseRepo.getNumberUserApplyForEachPost();
+    }
 }

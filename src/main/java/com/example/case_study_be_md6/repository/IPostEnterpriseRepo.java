@@ -1,5 +1,6 @@
 package com.example.case_study_be_md6.repository;
 
+import com.example.case_study_be_md6.dto.IPostEnterpriseStatisticDTO;
 import com.example.case_study_be_md6.model.PostEnterprise;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,8 +24,8 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
 //    select * from post_enterprise where id_post_enterprise not in
 //            (select post_enterprise_id_post_enterprise from user_apply
 //                    where app_user_id = 3)
-    @Query(nativeQuery = true, value = " select * from post_enterprise where id_post_enterprise not in\n" +
-            "            (select post_enterprise_id_post_enterprise from user_apply\n" +
+    @Query(nativeQuery = true, value = " select * from post_enterprise where id_post_enterprise not in " +
+            "            (select post_enterprise_id_post_enterprise from user_apply " +
             "                    where app_user_id =:id ) having status_post_enterprise=1 order by priority_post_enterprise DESC ")
     List<PostEnterprise> listPostByOderPriority(@Param("id")int id, Pageable pageable);
 
@@ -91,8 +92,8 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
     @Query(nativeQuery = true, value = "select * from Case_Study_MD6.post_enterprise where name_post_enterprise LIKE %:name% && address_main_enterprise LIKE %:address%  ")
     List<PostEnterprise> findPostUserfield(@Param("name") String name, @Param("address") String address);
 
-    @Query(nativeQuery = true ,value = "select * from Case_Study_MD6.post_enterprise where id_post_enterprise in\n" +
-            "(select post_enterprise_id_post_enterprise from user_apply\n" +
+    @Query(nativeQuery = true ,value = "select * from Case_Study_MD6.post_enterprise where id_post_enterprise in " +
+            "(select post_enterprise_id_post_enterprise from user_apply " +
             "where app_user_id = :id)")
      List<PostEnterprise> searchPostApplyByUser(@Param("id") int id);
 
@@ -135,10 +136,14 @@ public interface IPostEnterpriseRepo extends PagingAndSortingRepository<PostEnte
             "WHERE (:name = '' or enterprise.name_enterprise like %:name%) AND (:address = '' OR post_enterprise.address_main_enterprise like %:address%) AND " +
             "(:idFormJob = -1 OR form_job_post_enterprise_id_form_job = :idFormJob) and " +
             "      (:idField = -1 OR field_id_field = :idField) ")
-    Page<PostEnterprise> findEverything(@Param("name") String name, @Param("address") String address, @Param("idFormJob") Long idformjob, @Param("idField") Long idfield, Pageable pageable);
+    List<PostEnterprise> findEverything(@Param("name") String name, @Param("address") String address, @Param("idFormJob") Long idformjob, @Param("idField") Long idfield);
 
     @Query(nativeQuery = true, value = "select * from case_study_md6.post_enterprise where address_main_enterprise is not null")
     List<PostEnterprise> findAllAddress();
 
-
+    @Query(value = "select post_enterprise.name_post_enterprise AS namePost, count(user_apply.id_user_apply) as numberUserApply " +
+            "from post_enterprise " +
+            "         left join user_apply on user_apply.post_enterprise_id_post_enterprise = post_enterprise.id_post_enterprise " +
+            "group by post_enterprise.id_post_enterprise ", nativeQuery = true)
+    List<IPostEnterpriseStatisticDTO> getNumberUserApplyForEachPost();
 }

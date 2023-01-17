@@ -1,6 +1,7 @@
 package com.example.case_study_be_md6.service.InterfaceService;
 
 
+import com.example.case_study_be_md6.dto.IPostEnterpriseStatisticDTO;
 import com.example.case_study_be_md6.model.FormJob;
 import com.example.case_study_be_md6.model.PostEnterprise;
 import com.example.case_study_be_md6.model.Regime;
@@ -49,4 +50,5 @@ public interface IPostEnterpriseService {
 // Tìm kiếm bài viết theo tên, địa chỉ và lĩnh vực.
 //    List<PostEnterprise> findPostUser(String name, String address, int field);
 
+    List<IPostEnterpriseStatisticDTO> getNumberUserApplyForEachPost();
 }

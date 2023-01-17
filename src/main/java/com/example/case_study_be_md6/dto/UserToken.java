@@ -1,4 +1,4 @@
-package com.example.case_study_be_md6.model.ot;
+package com.example.case_study_be_md6.dto;
 
 import com.example.case_study_be_md6.model.Roles;
 

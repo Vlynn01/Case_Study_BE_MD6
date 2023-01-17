@@ -30,6 +30,7 @@ public class Enterprise {
     @ManyToOne
     private Field fieldEnterprise;
 
+    @Column(columnDefinition = "longtext")
     private String describeEnterprise;
 
     private Time timeRegisterEnterprise;
